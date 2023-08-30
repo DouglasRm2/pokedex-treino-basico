@@ -2,6 +2,7 @@
 *{
 margin: 0px;
 padding: 0px;
+box-sizing: border-box;
 
 }
 .content{
@@ -25,8 +26,15 @@ padding: 0px;
 .pokemons li{
     margin: .5rem;
     padding: 2rem 1rem;
-    background-color: #14a06f;
+    background-color: #36b1a0;
     color: #ffff;
     border-radius: 1rem;
-    height: 60px;
+    display: flex;
+    flex-direction: column;
+   }
+   
+   img{
+   max-width: 58%;
+   height: 100px;
+   align-self: self-end;
    }
