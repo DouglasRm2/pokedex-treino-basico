@@ -1,26 +1,24 @@
 
 
-const offset = 0
-const limit = 10
-const url = 'https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}'
+function convertpokemontypes(pokemonTypes){
+    return pokemonTypes.map((typeSlot) => `<li class="type"> ${typeSlot.type.name} </li>` )
+}
 
 function convertPokemontoHtml (pokemon){
-    return   `  
-    <li class="pokemon">
-    <span class="number"> #001</span>
+    return    `
+       <li class="pokemon">
+    <span class="number"> #${pokemon.order}</span>
     <span class="name"> ${pokemon.name} </span>
     
 <div class="detail">
 <ol class="types">
-<li class="type">grass</li>
-<li class="type">poison</li>
+             ${convertpokemontypes(pokemon.types).join(' ')}
 </ol>
 
-<img src="/assets/img/Bulbasaur.png" alt="${pokemon.name}">
+<img src="${pokemon.sprites.other.dream_world.front_default}" 
+alt="${pokemon.name}">
 </div>
-</li>
-
-`
+</li>`
 
 }
 
@@ -33,13 +31,14 @@ function convertPokemontoHtml (pokemon){
 })
 */
 
-/* e para melhorar ainda mais posso usar  arrow function, para situação de callback uma sintax reduzida*/
+/* e para melhorar ainda mais posso usar  (( arrow function )), para situação de callback uma sintax reduzida*/
 const pokemonList = document.getElementById('pokemonList')
 
 
 
 pokeApi.getpokemons().then ((pokemons = []) => {
-   pokemonList.innerHTML += pokemons.map(convertPokemontoHtml).join('')
+    const newHtml = pokemons.map(convertPokemontoHtml).join('')
+   pokemonList.innerHTML = newHtml
 })
 
 
