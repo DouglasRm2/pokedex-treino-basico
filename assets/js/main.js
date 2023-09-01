@@ -4,6 +4,11 @@ function convertpokemontypes(pokemonTypes){
     return pokemonTypes.map((typeSlot) => `<li class="type"> ${typeSlot.type.name} </li>` )
 }
 */
+const pokemonList = document.getElementById('pokemonList')
+const loadmoreButoon = document.getElementById('loadmoreButoon')
+const limit = 1
+let offset = 0;
+
 function convertPokemontoHtml (pokemon){
     return    `
        <li class="pokemon ${pokemon.type}">
@@ -12,7 +17,7 @@ function convertPokemontoHtml (pokemon){
     
 <div class="detail">
 <ol class="types">
-             ${pokemon.types.map((type) => `<li class="type"> ${type} </li>`).join('')}
+             ${pokemon.types.map((type) => `<li class="type ${type}"> ${type} </li>`).join('')}
 </ol>
 
 <img src="${pokemon.photo}" 
@@ -32,14 +37,17 @@ alt="${pokemon.name}">
 */
 
 /* e para melhorar ainda mais posso usar  (( arrow function )), para situação de callback uma sintax reduzida*/
-const pokemonList = document.getElementById('pokemonList')
 
 
+function loadPokemonItens (offset, limit )
+{
+    pokeApi.getpokemons(offset, limit ).then ((pokemons = []) => {
+        const newHtml = pokemons.map(convertPokemontoHtml).join('')
+       pokemonList.innerHTML += newHtml
+    })
+}
 
-pokeApi.getpokemons().then ((pokemons = []) => {
-    const newHtml = pokemons.map(convertPokemontoHtml).join('')
-   pokemonList.innerHTML = newHtml
-})
+
 
 
     
@@ -67,4 +75,9 @@ pokeApi.getpokemons().then ((pokemons = []) => {
 .................................
 */
 
+loadPokemonItens(offset, limit)
+loadmoreButoon.addEventListener('click', () =>{
+    offset += limit
+    loadPokemonItens(offset,limit)
+})
 
