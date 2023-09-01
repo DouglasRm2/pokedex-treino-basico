@@ -4,10 +4,27 @@
 
 const pokeApi = {}
 
+function convertPokeApiDetailPokemon(pokemonDetail){
+    const pokemon = new Pokemon()
+    pokemon.name = pokemonDetail.name
+    pokemon.number = pokemonDetail.order
+    
+
+    const types = pokemonDetail.types.map((typeSlot) => typeSlot.type.name)
+    const [type] = types
+    pokemon.types = types
+    pokemon.type  = type
+
+    pokemon.photo = pokemonDetail.sprites.other.dream_world.front_default
+
+    return pokemon
+}
 
 
 pokeApi.getpokemonsDetail = (pokemon) => {
-    return fetch(pokemon.url).then((response)=> response.json())
+    return fetch(pokemon.url)
+        .then((response)=> response.json())
+        .then(convertPokeApiDetailPokemon)
 }
 
 
