@@ -20,7 +20,7 @@ function convertPokemontoHtml (pokemon){
 </div>
 </li>
 
-`;
+`
 
 }
 
@@ -38,19 +38,26 @@ const pokemonList = document.getElementById('pokemonList')
 
 
 
-pokeApi.getpokemons().then ((pokemons) => {
+pokeApi.getpokemons().then ((pokemons = []) => {
+   pokemonList.innerHTML += pokemons.map(convertPokemontoHtml).join('')
+})
 
+
+    
+  /*   POSSO USAR ESSE MODELO TAMBÉM PARA USAR LISTAS
+    const listadeItens = []
+
+    
     for (let i = 0; i < pokemons.length; i++) {
         const pokemon = pokemons[i];
-         pokemonList.innerHTML += convertPokemontoHtml(pokemon)
-    
-
-    }
+        listadeItens.push(convertPokemontoHtml(pokemon))
+   }
+   console.log(listadeItens)
 })
-.catch((error) => console.log(error))
 
 
-    /* OU posso utilizar o .then DESSA FORMA!
+
+    OU posso utilizar o .then DESSA FORMA!
     .......................
     response
     .json()
