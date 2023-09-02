@@ -84,7 +84,6 @@
 
 
 
-
 .normal{
     background-color:  #a6a877 ;
 }
@@ -100,6 +99,10 @@
 .bug {
     background-color: #a8b720;
 }
+.bug2 {
+    background-color: #1283c4;
+}
+
 
 .pagination{
    display: flex;
