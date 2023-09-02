@@ -74,10 +74,26 @@ function loadPokemonItens (offset, limit )
 })
 .................................
 */
-
+const maxRecord = 9;
 loadPokemonItens(offset, limit)
 loadmoreButoon.addEventListener('click', () =>{
     offset += limit
-    loadPokemonItens(offset,limit)
+
+
+     const qtdRecordNextPage = offset + limit
+
+    if  (qtdRecordNextPage >=  maxRecord) {
+         const newlimit = maxRecord - offset
+        loadPokemonItens(offset,limit)
+    
+loadmoreButoon.parentElement.removeChild (loadmoreButoon)
+       
+    } else {
+
+        loadPokemonItens(offset,limit)
+    }
+
+    
+   
 })
 
