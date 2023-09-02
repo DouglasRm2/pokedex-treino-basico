@@ -5,8 +5,8 @@ function convertpokemontypes(pokemonTypes){
 }
 */
 const pokemonList = document.getElementById('pokemonList')
-const loadmoreButoon = document.getElementById('loadmoreButoon')
-const limit = 1
+const loadmoreButoon = document.getElementById('loadmoreButton')
+const limit = 4
 let offset = 0;
 
 function convertPokemontoHtml (pokemon){
