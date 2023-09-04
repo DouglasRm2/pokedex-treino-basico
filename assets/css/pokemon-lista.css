@@ -27,10 +27,33 @@ border-radius: 2rem;
  height: 700px;
  width: 100vw;
 }
+.description{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    border: solid #923818 1px;
+}
+.type{
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .bottom{  
-background-color: #923818;
+background-color: #f3f2f2;
 border-radius: 2rem 2rem 0rem 0rem;
 height: 100vh;
 width: 100vw;
+box-shadow: 0px 0px 20px 3px #fff;
+
+} .menu2{
+    border-radius: 2rem 2rem 0rem 0rem;
+    margin-top: 25px;
+    
+   
+} .menu3{
+    display: flex;
+    justify-content: space-between;
+    margin: 1px;
 }
