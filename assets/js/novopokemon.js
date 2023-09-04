@@ -4,15 +4,15 @@ function convertpokemontypes(pokemonTypes){
     return pokemonTypes.map((typeSlot) => `<li class="type"> ${typeSlot.type.name} </li>` )
 }
 */
-const pokemonList = document.getElementById('pokemonList')
-const loadmoreButoon = document.getElementById('loadmoreButton')
-const limit = 4
+const novo = document.getElementById('novo2')
+
+const limit = 1
 let offset = 0;
 
 function convertPokemontoHtml (pokemon){
     return    `
        <li class="pokemon ${pokemon.type}">
-    <span class="number"> #${pokemon.number}</span>
+    <span class="number"> ${pokemon.number}</span>
     <span class="name"> ${pokemon.name} </span>
     
 <div class="detail">
@@ -43,7 +43,7 @@ function loadPokemonItens (offset, limit )
 {
     pokeApi.getpokemons(offset, limit ).then ((pokemons = []) => {
         const newHtml = pokemons.map(convertPokemontoHtml).join('')
-       pokemonList.innerHTML += newHtml
+       novo.innerHTML += newHtml
     })
 }
 
@@ -73,7 +73,7 @@ function loadPokemonItens (offset, limit )
     })
 })
 .................................
-*/
+
 const maxRecord = 9;
 loadPokemonItens(offset, limit)
 loadmoreButoon.addEventListener('click', () =>{
@@ -96,4 +96,4 @@ loadmoreButoon.parentElement.removeChild (loadmoreButoon)
     
    
 })
-
+*/
